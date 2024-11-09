@@ -1,0 +1,22 @@
+{
+    "words": {
+        "Full Name": 4,
+        "Affiliation": 3,
+        "Experience 1": 2,
+        "Experience 2": 2,
+        "Research topic 1": 3,
+        "Research topic 2": 3,
+        "Research topic 3": 3,
+        "Other 1": 1,
+        "Other 2": 1
+    },
+    "descriptions": {
+        "full Name": "Name of the interviewee.",
+        "Affiliation": "Academic institution where she/he work.",
+        "Experience 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Experience 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Research topic 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Other 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Other 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words."
+    }
+}
