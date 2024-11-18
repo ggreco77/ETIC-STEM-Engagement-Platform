@@ -1,1 +1,1 @@
-
+This folder contains the Python script based on RAG (Retrieval-Augmented Generation) for the initial extraction of key concepts. Note: The selection of keywords included in each interviewee's word cloud and the adjustment of their corresponding font sizes were carried out through a manual process.
