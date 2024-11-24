@@ -11,11 +11,13 @@
         "Other 2": 1
     },
     "descriptions": {
-        "full Name": "Name of the interviewee.",
-        "Affiliation": "Academic institution where she/he work.",
+        "Full Name": "Name of the interviewee.",
+        "Affiliation": "Academic institution where she/he works.",
         "Experience 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
         "Experience 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
         "Research topic 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Research topic 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
+        "Research topic 3": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
         "Other 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.",
         "Other 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words."
     }
