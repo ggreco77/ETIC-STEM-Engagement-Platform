@@ -197,6 +197,7 @@
         background-color: #e0a800;
     }
     .pushpin {
+        font-family: 'Segoe UI Emoji';
         border-radius: 50%;
         cursor: pointer;
         display: flex;
