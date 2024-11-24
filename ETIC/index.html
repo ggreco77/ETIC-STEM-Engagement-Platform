@@ -1,80 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETIC Thematic Clouds</title>
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- External scripts loaded with defer to prevent page blocking -->
-    <script src="https://d3js.org/d3.v7.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.min.js" defer></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
-    <script src="js/scripts.js" defer></script> <!-- Load main script last -->
 
-</head>
-<body>
-    <nav><span class="cloud-text">ETIC Thematic Clouds</span> <span style="font-size: 12px;">Version 0.0.5</span></nav>
-    <div id="points-badge">0</div>
-    <div id="description">
-        <p> ETIC Thematic Clouds is a resource aimed at gathering information, including texts, videos, and images.
-        The word cloud is generated through the transcription of the 
-        <a href="https://www.youtube.com/playlist?list=PLP9pGhkLJlAXdXbzVvcl4snkAMkgTEjNH" target="_blank" rel="noopener noreferrer">interviews</a>
-        conducted by the new hires of the 
-        <a href="https://www.einstein-telescope.it/et-in-italia/" target="_blank" rel="noopener noreferrer">ETIC (Einstein Telescope Infrastructure Consortium)</a> project.
-        Users have the option to click on any word in the cloud, which will then be moved to a specific table.
-        By pressing the "email" button, users can send additional material related to that word,
-        providing a detailed description of the concept and their work. This material will be used to populate
-        the contextual menu associated with each word in the cloud, further facilitating exploration and access
-        to relevant information. The material will be used by the INFN Communication Office to create new outreach and social media resources.
-        </p>
-    </div>
-    
-    <div id="controls">
-        <button id="reset-button">Reset Wordcloud</button>
-        <button id="save-button">Save Wordcloud</button>
-        <input type="text" id="search-input" placeholder="Search for a word...">
-        <div id="slider-container">
-            <label for="word-size-slider">Word Size: </label>
-            <input type="range" id="word-size-slider" min="10" max="100" value="50">
-        </div>
-    </div>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>ETIC Thematic Clouds</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="css/style.css">
+            <script src="https://d3js.org/d3.v7.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.min.js"></script>
+            <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        </head>
+        <body>
+            <nav><span class="cloud-text">ETIC Thematic Clouds</span> <span style="font-size: 12px;">Version 0.0.5</span></nav>
+            <div id="points-badge">0</div>
+            <div id="description">
+                <p> ETIC Thematic Clouds is a resource aimed at gathering information, including texts, videos, and images.
+                The word cloud is generated through the transcription of the 
+                <a href="https://www.youtube.com/playlist?list=PLP9pGhkLJlAXdXbzVvcl4snkAMkgTEjNH" target="_blank" rel="noopener noreferrer">interviews</a>
+                conducted by the new hires of the 
+                <a href="https://www.einstein-telescope.it/et-in-italia/" target="_blank" rel="noopener noreferrer"> ETIC (Einstein Telescope Infrastructure Consortium)</a>
+                project. Users have the option to click on any word in the cloud, which will then be
+                moved to a specific table. By pressing the "email" button, users can send additional material related to that word,
+                providing a detailed description of the concept and their work. This material will be used to populate
+                the contextual menu associated with each word in the cloud, further facilitating exploration and access
+                to relevant information. The material will be used by the Communication Office to create new outreach and social media resources.
+                </p>
 
-    <div id="content">
-        <div id="wordcloud-container">
-            <svg id="wordcloud-svg"></svg>
-            <div id="description-container"><p id="description-text"></p></div>
-        </div>
-        <div id="selected-words-container">
-            <h3>Selected Words</h3>
-        </div>
-    </div>
-    
-    <footer>
-        Developed by Giuseppe Greco - Scientific Assistant of the ETIC Project -
-        <a href="mailto:giuseppe.greco@pg.infn.it" style="color: white; text-decoration: underline;">Contact</a>
-    </footer>
 
-    <!-- Modal for displaying media content -->
-    <div id="myModal" class="modal">
-        <div class="modal-content" id="modal-content"></div>
-        <span class="close">&times;</span>
-    </div>
 
-    <!-- Context menu -->
-    <div id="context-menu" class="context-menu"></div>
 
-    <!-- JSON data embedded in script tags for JavaScript access -->
-    <script id="words-data" type="application/json">
-        {"Full Name": 4, "Affiliation": 3, "Experience 1": 2, "Experience 2": 2, "Research topic 1": 3, "Research topic 2": 3, "Research topic 3": 3, "Other 1": 1, "Other 2": 1}
-    </script>
-    <script id="descriptions-data" type="application/json">
-        {"Full Name": "Name of the interviewee.", "Affiliation": "Academic institution where she/he works.", "Experience 1": "Add relevant content by clicking on a word in the cloud and using the email function in the Selected Words box.", "Experience 2": "Add relevant content by clicking on a word in the cloud and using the email function in the Selected Words box.", "Research topic 1": "Add relevant content by clicking on a word in the cloud and using the email function in the Selected Words box.", "Other 1": "Add relevant content by clicking on a word in the cloud and using the email function in the Selected Words box.", "Other 2": "Add relevant content by clicking on a word in the cloud and using the email function in the Selected Words box."}
-    </script>
-    <script id="predefined-list" type="application/json">
-        [{"word": "Alessandro Parisi", "name": "Alessandro Parisi"}, {"word": "University of Perugia", "name": "Alessandro Parisi"}, {"word": "ICTP", "name": "Alessandro Parisi"}, {"word": "Taiwan Gravitational Group", "name": "Alessandro Parisi"}]
-        <!-- Continue with data in the correct format -->
-    </script>
-    <script id="media-files" type="application/json"> {}</script>
-</body>
-</html>
+            </div>
+            <div id="controls">
+                <button id="reset-button">Reset Wordcloud</button>
+                <button id="save-button">Save Wordcloud</button>
+                <input type="text" id="search-input" placeholder="Search for a word...">
+                <div id="slider-container">
+                    <label for="word-size-slider">Word Size: </label>
+                    <input type="range" id="word-size-slider" min="10" max="100" value="50">
+                </div>
+            </div>
+            <div id="content">
+                <div id="wordcloud-container">
+                    <svg id="wordcloud-svg"></svg>
+                    <div id="description-container"><p id="description-text"></p></div>
+                </div>
+                <div id="selected-words-container">
+                    <h3>Selected Words</h3>
+                </div>
+               <!-- <div id="frequency-chart"></div> -->
+            </div>
+            <footer>
+                  Developed by Giuseppe Greco - Scientific Assistant of the ETIC Project -
+                  <a href="mailto:giuseppe.greco@pg.infn.it" style="color: white; text-decoration: underline;">Contatta</a>
+            </footer>
+            <div id="myModal" class="modal">
+                <div class="modal-content" id="modal-content"></div>
+                <span class="close">&times;</span>
+            </div>
+            <div id="context-menu" class="context-menu"></div>
+            <script id="words-data" type="application/json">{"Full Name": 4, "Affiliation": 3, "Experience 1": 2, "Experience 2": 2, "Research topic 1": 3, "Research topic 2": 3, "Research topic 3": 3, "Other 1": 1, "Other 2": 1}</script>
+            <script id="descriptions-data" type="application/json">{"Full Name": "Name of the interviewee.", "Affiliation": "Academic institution where she/he works.", "Experience 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Experience 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Research topic 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Research topic 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Research topic 3": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Other 1": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words.", "Other 2": "Add the relevant content by clicking on a word in the cloud and using the email function linked to that word in the box Selected Words."}</script>
+            <script id="predefined-list" type="application/json">[{"word": "Experience 1", "name": "Full Name"}, {"word": "Experience 2", "name": "Full Name"}, {"word": "Research topic 1", "name": "Full Name"}, {"word": "Research topic 2", "name": "Full Name"}]</script>
+            <script id="media-files" type="application/json">{}</script>
+            <script src="js/scripts.js"></script>
+        </body>
+        </html>
+        
